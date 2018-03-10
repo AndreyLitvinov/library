@@ -1,0 +1,19 @@
+﻿@model NavigationViewModel
+
+<a class="btn btn-block btn-secondary"
+   asp-action="List"
+   asp-controller="Product"
+   asp-route-category="">
+    Главная
+</a>
+
+@foreach (var navigationItem in Model.Items)
+{
+    <a class="btn btn-block
+       @(navigationItem.IsActive != null && navigationItem.IsActive(navigationItem, Model.RouteData) ? "btn-primary": "btn-secondary")"
+       asp-action="@navigationItem.Action"
+       asp-controller="@navigationItem.Controller"
+       asp-all-route-data="@navigationItem.Parameters">
+        @navigationItem.Text
+    </a>
+}

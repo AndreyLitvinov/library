@@ -1,0 +1,16 @@
+﻿@model Basket
+
+<div class="">
+    @if (Model.Lines.Count() > 0)
+    {
+        <small class="navbar-text">
+            <b>Вы выбрали:</b>
+            @Model.Lines.Sum(x => x.Count) книг(и)
+        </small>
+    }
+    <a class="btn btn-sm btn-secondary navbar-btn"
+       asp-controller="Basket" asp-action="Index"
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        <i class="fa fa-shopping-cart"></i>
+    </a>
+</div>
